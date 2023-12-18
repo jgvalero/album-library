@@ -6,6 +6,7 @@ function Home() {
   return (
     <div>
       <h1>Album Library</h1>
+      <a href="/add">Add Album</a>
       {sampleAlbums.map((album) => (
         <Album
           key={album.id}
