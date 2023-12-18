@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "albumArt": "https://upload.wikimedia.org/wikipedia/en/6/6b/Portishead_-_Dummy.png",
+        "title": "Dummy",
+        "artist": "Portishead"
+    },
+    {
+        "id": 2,
+        "albumArt": "https://upload.wikimedia.org/wikipedia/en/7/74/Pink_Floyd-Animals-Frontal.jpg",
+        "title": "Animals",
+        "artist": "Pink Floyd"
+    },
+    {
+        "id": 3,
+        "albumArt": "https://upload.wikimedia.org/wikipedia/en/4/42/ATribeCalledQuestTheLowEndtheory.jpg",
+        "title": "The Low End Theory",
+        "artist": "A Tribe Called Quest"
+    }
+]
