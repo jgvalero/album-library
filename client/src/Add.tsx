@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Add() {
   const [title, setTitle] = useState("");
@@ -9,10 +10,19 @@ function Add() {
   const [dateListened, setDateListened] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(`Adding new album: ${title} by ${artist}`);
-    navigate("/");
+    try {
+      const response = await axios.post("http://localhost:3000/albums", {
+        title,
+        artist,
+      });
+      const newAlbum = response.data;
+      console.log(`Added new album: ${newAlbum.title} by ${newAlbum.artist}`);
+      navigate("/");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (

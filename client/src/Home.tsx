@@ -1,13 +1,31 @@
+import { useEffect, useState } from "react";
 import Album from "./components/Album";
-import sampleAlbums from "./sampleAlbums.json";
+import axios from "axios";
+
+interface Album {
+  id: number;
+  albumArt: string;
+  title: string;
+  artist: string;
+}
 
 function Home() {
-  console.log(sampleAlbums);
+  const [albums, setAlbums] = useState<Album[]>([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/albums")
+      .then((response) => setAlbums(response.data))
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
     <div>
       <h1>Album Library</h1>
       <a href="/add">Add Album</a>
-      {sampleAlbums.map((album) => (
+      {albums.map((album) => (
         <Album
           key={album.id}
           albumArt={album.albumArt}
