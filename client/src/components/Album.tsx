@@ -1,24 +1,28 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import emptyAlbumArt from "../assets/empty.jpg";
 
 interface AlbumProps {
   albumArt: string;
   title: string;
   artist: string;
+  id: number;
 }
 
-const Album: React.FC<AlbumProps> = ({ albumArt, title, artist }) => {
+const Album: React.FC<AlbumProps> = ({ albumArt, title, artist, id }) => {
   return (
-    <div className="album">
-      <img
-        src={albumArt || emptyAlbumArt}
-        alt={`${title} album cover`}
-        width="128"
-        height="128"
-      />
-      <h2>{title}</h2>
-      <p>{artist}</p>
-    </div>
+    <Link to={`/album/${id}`}>
+      <div className="album">
+        <img
+          src={albumArt || emptyAlbumArt}
+          alt={`${title} album cover`}
+          width="128"
+          height="128"
+        />
+        <h2>{title}</h2>
+        <p>{artist}</p>
+      </div>
+    </Link>
   );
 };
 

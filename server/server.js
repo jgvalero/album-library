@@ -29,6 +29,20 @@ app.get("/albums", async (req, res, next) => {
   }
 });
 
+app.get("/albums/:id", async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query("SELECT * FROM albums WHERE id = $1", [id]);
+    if (result.rows.length > 0) {
+      res.json(result.rows[0]);
+    } else {
+      res.status(404).json({ error: "Album not found" });
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.post("/albums", async (req, res, next) => {
   const { title, artist } = req.body;
   try {

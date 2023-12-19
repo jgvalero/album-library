@@ -31,6 +31,7 @@ function Home() {
           albumArt={album.albumArt}
           title={album.title}
           artist={album.artist}
+          id={album.id}
         />
       ))}
     </div>
