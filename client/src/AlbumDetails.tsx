@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import emptyAlbumArt from "./assets/empty.jpg";
+import "./AlbumDetails.css";
 
 interface Album {
   id: number;
@@ -39,6 +41,21 @@ function AlbumDetails() {
 
   return (
     <div>
+      {album.album_art ? (
+        <img
+          src={album.album_art}
+          alt={`${album.title} album cover`}
+          width="256"
+          height="256"
+        />
+      ) : (
+        <img
+          src={emptyAlbumArt}
+          alt="Fallback album cover"
+          width="256"
+          height="256"
+        />
+      )}
       <h1>{album.title}</h1>
       <h2>by {album.artist}</h2>
       {album.rating && <p>Rating: {album.rating}</p>}
