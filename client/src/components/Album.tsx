@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import emptyAlbumArt from "../assets/empty.jpg";
+import "./Album.css";
 
 interface AlbumProps {
   albumArt: string;
@@ -11,8 +12,8 @@ interface AlbumProps {
 
 const Album: React.FC<AlbumProps> = ({ albumArt, title, artist, id }) => {
   return (
-    <Link to={`/album/${id}`}>
-      <div className="album">
+    <Link to={`/album/${id}`} className="album">
+      <div>
         <img
           src={albumArt || emptyAlbumArt}
           alt={`${title} album cover`}

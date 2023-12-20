@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Album from "./components/Album";
 import axios from "axios";
+import "./Home.css";
 
 interface Album {
   id: number;
@@ -25,15 +26,17 @@ function Home() {
     <div>
       <h1>Album Library</h1>
       <a href="/add">Add Album</a>
-      {albums.map((album) => (
-        <Album
-          key={album.id}
-          albumArt={album.albumArt}
-          title={album.title}
-          artist={album.artist}
-          id={album.id}
-        />
-      ))}
+      <div className="albums">
+        {albums.map((album) => (
+          <Album
+            key={album.id}
+            albumArt={album.albumArt}
+            title={album.title}
+            artist={album.artist}
+            id={album.id}
+          />
+        ))}
+      </div>
     </div>
   );
 }

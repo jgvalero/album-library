@@ -1,0 +1,21 @@
+.album {
+  width: 200px;
+  border: 1px solid #000;
+  padding: 10px;
+  margin: 10px;
+}
+
+.album img {
+  display: block;
+  margin: 0 auto;
+}
+
+.album h2 {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.album p {
+  text-align: center;
+  font-size: 1em;
+}

@@ -1,0 +1,8 @@
+.albums {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  width: 100%;
+  max-width: 1200px; /* Maximum width of the grid */
+  margin: auto; /* Centers the grid horizontally */
+  border: 1px solid #000;
+}

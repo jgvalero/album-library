@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 interface Album {
@@ -14,6 +14,7 @@ interface Album {
 
 function AlbumDetails() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [album, setAlbum] = useState<Album | null>(null);
 
   useEffect(() => {
@@ -22,6 +23,15 @@ function AlbumDetails() {
       .then((response) => setAlbum(response.data))
       .catch((error) => console.error(error));
   }, [id]);
+
+  const deleteAlbum = () => {
+    axios
+      .delete(`http://localhost:3000/albums/${id}`)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => console.error(error));
+  };
 
   if (!album) {
     return <div>Loading...</div>;
@@ -37,6 +47,7 @@ function AlbumDetails() {
         <img src={album.album_art} alt={`${album.title} album cover`} />
       )}
       {album.date_listened && <p>Date Listened: {album.date_listened}</p>}
+      <button onClick={deleteAlbum}>Delete Album</button>
     </div>
   );
 }
